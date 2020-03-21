@@ -26,7 +26,7 @@ class VisitorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('list.addVisitor');
     }
 
     /**
@@ -38,6 +38,24 @@ class VisitorsController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, ['name' => 'required',
+                                    'nic' => 'required',
+                                    'date_of_arrival' => 'required']);
+
+        //Create Visitor
+        $visitor = new Visitor;
+        $visitor->name = $request->input('name');
+        $visitor->nic = $request->input('nic');
+        $visitor->vehicle_no = $request->input('vehicle_no');
+        $visitor->date_of_arrival = $request->input('date_of_arrival');
+        $visitor->arrived = 'false';
+        $visitor->approved = 'false';
+        $visitor->user_entered = 'temp';
+        $visitor->user_mark_arrival = 'false';
+        $visitor->version = now();
+        $visitor->save();
+
+        return redirect('/')->with('success', 'Visitor Added');
     }
 
     /**
