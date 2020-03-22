@@ -25,3 +25,11 @@ html, body{
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.btn-act{
+  margin-bottom: 1rem;
+}
+
+.responsive-width {
+  font-size: 15px;
+}

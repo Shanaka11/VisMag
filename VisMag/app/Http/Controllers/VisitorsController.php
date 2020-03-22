@@ -14,9 +14,9 @@ class VisitorsController extends Controller
      */
     public function index()
     {
-        //
         $visitors = Visitor::All();
         return view('list.visitorlist')->with('visitors', $visitors);
+        //return view('layouts.app');
     }
 
     /**
