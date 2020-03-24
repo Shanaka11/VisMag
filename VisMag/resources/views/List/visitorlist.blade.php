@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    setCreateBtnShow();
+</script>
 <!-- List -->
     <table class="table">
         <thead>
