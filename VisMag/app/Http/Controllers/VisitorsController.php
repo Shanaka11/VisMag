@@ -78,6 +78,8 @@ class VisitorsController extends Controller
     public function edit($id)
     {
         //
+        $visitor = Visitor::find($id);
+        // Return the edit view
     }
 
     /**
@@ -90,6 +92,25 @@ class VisitorsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //
+        $this->validate($request, ['name' => 'required',
+                                    'nic' => 'required',
+                                    'date_of_arrival' => 'required']);
+
+        //Create Visitor
+        $visitor = Visitor::find($id);
+        $visitor->name = $request->input('name');
+        $visitor->nic = $request->input('nic');
+        $visitor->vehicle_no = $request->input('vehicle_no');
+        $visitor->date_of_arrival = $request->input('date_of_arrival');
+        $visitor->arrived = 'false';
+        $visitor->approved = 'false';
+        $visitor->user_entered = 'temp';
+        $visitor->user_mark_arrival = 'false';
+        $visitor->version = now();
+        $visitor->save();
+
+        return redirect('/')->with('success', 'Visitor Updated');        
     }
 
     /**
@@ -101,5 +122,8 @@ class VisitorsController extends Controller
     public function destroy($id)
     {
         //
+        $visitor = Visitor::find($id);
+        $visitor->delete();
+        return redirect('/')->with('success', 'Visitor Deleted'); 
     }
 }
