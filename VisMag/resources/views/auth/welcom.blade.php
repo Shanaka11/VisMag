@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Welcom dude, Now log in</h1>
+<h1>Hi {{ Auth::user()->name }}</h1>
 @endsection
