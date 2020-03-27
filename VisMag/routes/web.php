@@ -27,5 +27,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Routes for user Model
 Route::get('/Users', 'User\UserController@index');
-Route::match(['put', 'patch'], '/User/{User}', 'User\UserController@Update');
-Route::delete('/User/{User}', 'User\UserController@Delete');
+Route::resource('UserInfo', 'UserInfoController');

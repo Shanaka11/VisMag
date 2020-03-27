@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAdminToUsers extends Migration
+class AddAdminToUserinfo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class AddAdminToUsers extends Migration
      */
     public function up()
     {
-        DB::table('users')->insert(array(
-            'name' => 'admin',
+        DB::table('user_infos')->insert(array(
             'email' => 'admin@admin.com',
-            'password' => Hash::make('admin'),
+            'userrole' => 'ADMIN',
+            'approved' => true,
             'created_at' => now(),
             'updated_at' => now()            
         ));        
-
-        // Add details to the user_infos table as well
     }
 
     /**
@@ -31,7 +29,8 @@ class AddAdminToUsers extends Migration
      */
     public function down()
     {
-        DB::table('users')->where('name', '=', 'admin')->delete();
-        // remove details from the user_infos table as well
+        Schema::table('userinfo', function (Blueprint $table) {
+            //
+        });
     }
 }
