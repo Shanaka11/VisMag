@@ -8,7 +8,7 @@
 
             rows.forEach(row => {
                 row.addEventListener("click", () => {
-                    sidePanOpen();
+                    sidePanOpen(row.innerHTML);                
                 })
             })
         });    

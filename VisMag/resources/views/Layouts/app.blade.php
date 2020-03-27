@@ -28,12 +28,19 @@
     <div id="app">
         <main class="py-4">
             <!-- SidePanel Visitor-->
-            <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:5" id='visitorSidePan'>
+            <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='visitorSidePan'>
                 Visitor
             </div>                    
             <!-- SidePanel User-->
-            <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:5" id='userSidePan'>
-                User
+            <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='userSidePan'>
+                <form action="#">
+                    <label id="userEmail"></label><br>
+                    <label for="userName">Name</label>
+                    <input type="text" id="userName" name="name"><br><br>
+                    <label for="userRole">User Role</label>
+                    <input type="text" id="userRole" name="userrole"><br><br>
+                    <input type="submit" value="Submit">
+                </form>                
             </div> 
             <!-- Overlay -->
             <div class="w3-overlay w3-animate-opacity" onclick="sidePanClose()" style="cursor:pointer" id="myOverlay"></div>                       

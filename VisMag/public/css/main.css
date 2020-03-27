@@ -40,7 +40,7 @@ Taken from https://www.w3schools.com/w3css/4/w3.css
 */
 .sidebar{
   height:100%;
-  width:200px;
+  width:400px;
   background-color:rgb(255, 255, 255);
   position:fixed!important;
   z-index:1;
