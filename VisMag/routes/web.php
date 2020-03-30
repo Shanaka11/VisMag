@@ -28,3 +28,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Routes for user Model
 Route::get('/Users', 'User\UserController@index');
 Route::resource('UserInfo', 'UserInfoController');
+Route::match(['PATCH', 'PUT'], 'Users/UpdateRole', 'UserInfoController@updateRole');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\UserInfo;
+use DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -20,27 +22,11 @@ class UserController extends Controller
     protected $redirectTo = '/home';
 
     public function index(){
-        $users = User::All();
+        $users = DB::table('users')
+                        ->join('user_infos', 'users.email', '=', 'user_infos.email')
+                        ->select('users.name', 'users.email', 'user_infos.userrole', 'user_infos.approved')
+                        ->get();
         return view('user.userlist')->with('users', $users);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->user_role = $request->input('user_role');
-        $user->arrived = 'false';
-        $user->approved = 'false';
-        $user->save();
-
-        return redirect($redirectTo)->with('success', 'User Updated');        
-    }    
-
-    public function delete($id){
-        $user = User::find($id);
-        $user->delete();
-        return redirect($redirectTo)->with('success', 'User Deleted'); 
     }
 
 }

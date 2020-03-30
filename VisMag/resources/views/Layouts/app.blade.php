@@ -33,14 +33,17 @@
             </div>                    
             <!-- SidePanel User-->
             <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='userSidePan'>
-                <form action="#">
-                    <label id="userEmail"></label><br>
-                    <label for="userName">Name</label>
-                    <input type="text" id="userName" name="name"><br><br>
-                    <label for="userRole">User Role</label>
-                    <input type="text" id="userRole" name="userrole"><br><br>
-                    <input type="submit" value="Submit">
-                </form>                
+                {!! Form::open(['action' => 'UserInfoController@updateRole', 'method' => 'POST']) !!}
+                    {{Form::Text('userEmail', '', ['id=userEmail'])}}<br>
+                    {{Form::label('userName', 'Name')}}<br>
+                    {{Form::text('userName', '',['id=userName'])}}<br>      
+                    {{Form::label('userRole', 'Role')}}<br>
+                    {{Form::text('userRole', '',['id=userRole'])}}<br>  
+                    {{Form::checkbox('userApproved', '1', false, ['id' =>'userApproved'])}}
+                    {{Form::label('userApproved', 'Approved')}}<br> 
+                    {{Form::Hidden('_method', 'PUT')}}              
+                    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}                                   
+                {!! Form::close() !!}   
             </div> 
             <!-- Overlay -->
             <div class="w3-overlay w3-animate-opacity" onclick="sidePanClose()" style="cursor:pointer" id="myOverlay"></div>                       
@@ -100,6 +103,7 @@
                         <i class="fab fa-css3"></i>
                         <h3>Notifications</h3>
                         <p>Sends notifications to the relevent users depending on other users activities</p>
+                        @include('inc.messages')
                     </div>				
                 </div>
             </div>            

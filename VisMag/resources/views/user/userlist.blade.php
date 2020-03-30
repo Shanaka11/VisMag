@@ -35,7 +35,7 @@
                     <!-- <th scope="row">1</th> -->
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->user_role}}</td>
+                        <td>{{$user->userrole}}</td>
                         <td>{{$user->approved}}</td>                                                    
                     </tr>
                 @endforeach
