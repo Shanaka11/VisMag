@@ -29,7 +29,22 @@
         <main class="py-4">
             <!-- SidePanel Visitor-->
             <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='visitorSidePan'>
-                Visitor
+                {!! Form::open(['action' => 'VisitorsController@updateVisitor', 'method' => 'POST']) !!}
+                    {{Form::label('visitorId', 'Id')}}<br>
+                    {{Form::text('visitorId', '',['id=visitorId'])}}<br>                
+                    {{Form::label('visitorName', 'Name')}}<br>
+                    {{Form::text('visitorName', '',['id=visitorName'])}}<br>      
+                    {{Form::label('visitorNic', 'NIC')}}<br>
+                    {{Form::text('visitorNic', '',['id=visitorNic'])}}<br>  
+                    {{Form::label('visitorVehicle', 'Vehicle No')}}<br>
+                    {{Form::text('visitorVehicle', '',['id=visitorVehicle'])}}<br>    
+                    {{Form::label('visitorDate', 'Date of Arrival')}}<br>
+                    {{Form::text('visitorDate', '',['id=visitorDate'])}}<br>                                         
+                    {{Form::checkbox('visitorArrived', '1', false, ['id' =>'visitorArrived'])}}
+                    {{Form::label('visitorArrived', 'Arrived')}}<br> 
+                    {{Form::Hidden('_method', 'PUT')}}              
+                    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}                                   
+                {!! Form::close() !!}   
             </div>                    
             <!-- SidePanel User-->
             <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='userSidePan'>

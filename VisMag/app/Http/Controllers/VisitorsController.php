@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Visitor;
+use Auth;
 
 class VisitorsController extends Controller
 {
@@ -37,7 +38,7 @@ class VisitorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation to not allow security to entry by security users
         $this->validate($request, ['name' => 'required',
                                     'nic' => 'required',
                                     'date_of_arrival' => 'required']);
@@ -58,6 +59,36 @@ class VisitorsController extends Controller
         return redirect('/')->with('success', 'Visitor Added');
     }
 
+    public function updateVisitor(Request $request)
+    {  
+        /*
+        $test = Auth::user();
+        dd($test);
+        Log::info($test); // will show in your log
+        var_dump($test);*/
+
+        //Validation to not allow security to entry by security users and mark arrival only for security users and approval only for admin users
+
+        $visitor = Visitor::find($request->input('visitorId'));
+        $visitor->name = $request->input('visitorName');
+        $visitor->nic = $request->input('visitorNic');
+        $visitor->vehicle_no = $request->input('visitorVehicle');
+        $visitor->date_of_arrival = $request->input('visitorDate');
+        $visitor->version = now();
+        $visitor->user_entered = Auth::user()->name;
+
+        if($request->input('visitorArrived') != null){
+            $visitor->arrived = true;
+            $visitor->user_mark_arrival = Auth::user()->name;
+            $test = 'Visitor ' . $request->input('visitorName') . ' Arrived';
+        }else{
+            $visitor->arrived = false;
+            $test = 'Visitor ' . $request->input('visitorName') . ' Updated';
+        }
+
+        $visitor->save();
+        return redirect('/Visitor')->with('success', $test);        
+    }  
     /**
      * Display the specified resource.
      *
@@ -121,7 +152,7 @@ class VisitorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Validation to not allow security to entry by security users
         $visitor = Visitor::find($id);
         $visitor->delete();
         return redirect('/')->with('success', 'Visitor Deleted'); 

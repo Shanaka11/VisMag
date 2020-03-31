@@ -1,14 +1,27 @@
 @extends('layouts.app')
 
-@section('content')
+@section('script')
 <script>
     setCreateBtnShow();
+    document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-vis]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    sidePanOpenVisitor(row.innerHTML);                
+                })
+            })
+        });    
 </script>
+@endsection
+
+@section('content')
 <!-- List -->
     <table class="table">
         <thead>
             <tr>
-                <!-- Table Headers -->              
+                <!-- Table Headers -->   
+                <th scope="col" hidden>Id</th>           
                 <th scope="col">Name</th>
                 <th scope="col">NIC</th>
                 <th scope="col">Vehical No</th>
@@ -20,8 +33,9 @@
             <!-- Table Rows -->
             @if(count($visitors) > 0)
                 @foreach ($visitors as $visitor)
-                    <tr>
+                    <tr data-vis= {{$visitor->name}}>
                     <!-- <th scope="row">1</th> -->
+                        <td hidden>{{$visitor->id}}</td>
                         <td>{{$visitor->name}}</td>
                         <td>{{$visitor->nic}}</td>
                         <td>{{$visitor->vehicle_no}}</td>
