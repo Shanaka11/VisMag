@@ -4,27 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserInfo;
+use DB;
+use Auth;
 
 class UserInfoController extends Controller
 {
+    public function checkUserRole(){
+        $role = DB::table('user_infos')
+                ->select('userrole')
+                ->where('email', '=', Auth::user()->email)
+                ->get();
+        return $role[0]->userrole;
+    }
+
     //
     public function updateRole(Request $request)
     {
+        $role = $this->checkUserRole();
+        
         $user = UserInfo::find($request->input('userEmail'));
         $user->userrole = $request->input('userRole');
         if($request->input('userApproved') != null){
-            $user->approved = $request->input('userApproved');
-            $test = 'User ' . $request->input('userName') . ' Approved';
+            if($role == 'ADMIN'){
+                $user->approved = $request->input('userApproved');
+                $test = 'User ' . $request->input('userName') . ' Approved';
+            }else{
+                return redirect('/Users')->with('error', 'Must have ADMIN privilages to approve visitors'); 
+            }
         }else{
-            $user->approved = false;
-            $test = 'User ' . $request->input('userName') . ' Updated';
+            if($role == 'ADMIN'){
+                $user->approved = false;
+                $test = 'User ' . $request->input('userName') . ' Updated';
+            }else{
+                return redirect('/Users')->with('error', 'Must have ADMIN privilages to approve visitors'); 
+            }
         }
-/*
-        $test = $request;
-        dd($test);
-        Log::info($test); // will show in your log
-        var_dump($test);
-*/
+
         $user->save();
         return redirect('/Users')->with('success', $test);        
     }    
