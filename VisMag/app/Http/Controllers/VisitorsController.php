@@ -133,7 +133,7 @@ class VisitorsController extends Controller
             $visitor->version = now();
             $visitor->user_entered = Auth::user()->name;
         }
-
+        
         if($request->input('visitorApproved') != null){
             if($role == 'ADMIN'){
                 $visitor->approved = true;

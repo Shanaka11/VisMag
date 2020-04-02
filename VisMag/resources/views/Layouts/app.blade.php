@@ -41,7 +41,9 @@
                     {{Form::label('visitorDate', 'Date of Arrival')}}<br>
                     {{Form::text('visitorDate', '',['id=visitorDate'])}}<br>                                         
                     {{Form::checkbox('visitorArrived', '1', false, ['id' =>'visitorArrived'])}}
-                    {{Form::label('visitorArrived', 'Arrived')}}<br> 
+                    {{Form::label('visitorArrived', 'Arrived')}}<br>
+                    {{Form::checkbox('visitorApproved', '1', false, ['id' =>'visitorApproved'])}}
+                    {{Form::label('visitorApproved', 'Approved')}}<br>                      
                     {{Form::Hidden('_method', 'PUT')}}              
                     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}                                   
                 {!! Form::close() !!} 
