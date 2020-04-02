@@ -39,7 +39,7 @@
                     {{Form::label('visitorVehicle', 'Vehicle No')}}<br>
                     {{Form::text('visitorVehicle', '',['id=visitorVehicle'])}}<br>    
                     {{Form::label('visitorDate', 'Date of Arrival')}}<br>
-                    {{Form::text('visitorDate', '',['id=visitorDate'])}}<br>                                         
+                    {{Form::Date('visitorDate', '',['id=visitorDate'])}}<br>                                         
                     {{Form::checkbox('visitorArrived', '1', false, ['id' =>'visitorArrived'])}}
                     {{Form::label('visitorArrived', 'Arrived')}}<br>
                     {{Form::checkbox('visitorApproved', '1', false, ['id' =>'visitorApproved'])}}
