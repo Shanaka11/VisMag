@@ -12,11 +12,20 @@
                 })
             })
         });    
+
+    document.addEventListener("DOMContentLoaded", () => {
+            const searchInputUser = document.getElementById('searchUser');
+
+            searchInputUser.addEventListener("keyup", () => {
+                filterUseTable();                
+            })
+    });
 </script>
 @endsection
 
 @section('content')
 <!-- List -->
+    <input id="searchUser" type="text" placeholder="Search..">
     <table class="table">
         <thead>
             <tr>
@@ -27,7 +36,7 @@
                 <th scope="col">Approved</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="userList">
             <!-- Table Rows -->
             @if(count($users) > 0)
                 @foreach ($users as $user)

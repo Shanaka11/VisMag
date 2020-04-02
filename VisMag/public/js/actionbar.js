@@ -111,3 +111,44 @@ function filterVisTable(){
         }
     }
 }
+
+function filterUseTable(){
+    //Search Input
+    let searchInputVisitor = document.getElementById('searchUser').value.toUpperCase();
+    //Search table
+    let table = document.getElementById('userList');
+    //Get Rows
+    let row = table.querySelectorAll("tr[data-name]");
+
+    for(let i=0; i<row.length; i++){
+
+        let col= row[i].getElementsByTagName('td');
+
+        if( searchInputVisitor == 'APPROVED' || searchInputVisitor == 'NOT APPROVED'){
+            switch(searchInputVisitor){
+                case 'APPROVED':
+                    if(col[3].innerHTML.toUpperCase() == 1){
+                        row[i].style.display = '';
+                    }else{
+                        row[i].style.display = 'none';
+                    }                    
+                    break;
+                case 'NOT APPROVED':
+                    if(col[3].innerHTML.toUpperCase() == 0){
+                        row[i].style.display = '';
+                    }else{
+                        row[i].style.display = 'none';
+                    }                    
+                    break;
+            }         
+        }else{
+            if( col[0].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1 ||
+                col[1].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1 ||
+                col[2].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1) {
+                row[i].style.display = '';
+            }else{
+                row[i].style.display = 'none';
+            }
+        }
+    }    
+}
