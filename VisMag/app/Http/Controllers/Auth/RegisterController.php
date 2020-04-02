@@ -67,7 +67,7 @@ class RegisterController extends Controller
         UserInfo::create([
             'email' => $data['email'],
             'userrole' => 'undefined',
-            'approved' => false
+            'approved' => 0
         ]);
 
         return User::create([

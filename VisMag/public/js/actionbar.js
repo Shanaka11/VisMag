@@ -54,3 +54,60 @@ function sidePanOpenVisitor(innerHtml){
         }
     }
 }
+
+function filterVisTable(){
+    //Search Input
+    let searchInputVisitor = document.getElementById('searchVisitor').value.toUpperCase();
+    //Search table
+    let table = document.getElementById('visitorList');
+    //Get Rows
+    let row = table.querySelectorAll("tr[data-vis]");
+
+    for(let i=0; i<row.length; i++){
+
+        let col= row[i].getElementsByTagName('td');
+
+        if( searchInputVisitor == 'ARRIVED' || searchInputVisitor == 'NOT ARRIVED' ||
+            searchInputVisitor == 'APPROVED' || searchInputVisitor == 'NOT APPROVED'){
+            switch(searchInputVisitor){
+                case 'ARRIVED':
+                    if(col[5].innerHTML.toUpperCase() == 1){
+                        row[i].style.display = '';
+                    }else{
+                        row[i].style.display = 'none';
+                    }                       
+                    break;
+                case 'NOT ARRIVED':
+                    if(col[5].innerHTML.toUpperCase() == 0){
+                        row[i].style.display = '';
+                    }else{
+                        row[i].style.display = 'none';
+                    }                    
+                    break;
+                case 'APPROVED':
+                    if(col[6].innerHTML.toUpperCase() == 1){
+                        row[i].style.display = '';
+                    }else{
+                        row[i].style.display = 'none';
+                    }                    
+                    break;
+                case 'NOT APPROVED':
+                    if(col[6].innerHTML.toUpperCase() == 0){
+                        row[i].style.display = '';
+                    }else{
+                        row[i].style.display = 'none';
+                    }                    
+                    break;
+            }         
+        }else{
+            if( col[1].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1 ||
+                col[2].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1 ||
+                col[3].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1 ||
+                col[4].innerHTML.toUpperCase().indexOf(searchInputVisitor) > -1){
+                row[i].style.display = '';
+            }else{
+                row[i].style.display = 'none';
+            }
+        }
+    }
+}

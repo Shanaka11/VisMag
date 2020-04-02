@@ -16,7 +16,7 @@ class CreateUserInfosTable extends Migration
         Schema::create('user_infos', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('UserRole')->default('undefined');
-            $table->boolean('Approved')->default(true);
+            $table->boolean('Approved')->default(false);
             $table->timestamps();
         });
     }

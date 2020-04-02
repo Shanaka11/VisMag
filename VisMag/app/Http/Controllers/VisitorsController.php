@@ -9,12 +9,19 @@ use DB;
 
 class VisitorsController extends Controller
 {
+    
     public function checkUserRole(){
         $role = DB::table('user_infos')
                 ->select('userrole')
                 ->where('email', '=', Auth::user()->email)
+                ->where('approved', '=', '1')
                 ->get();
-        return $role[0]->userrole;
+
+        if(count($role)> 0){
+            return $role[0]->userrole;
+        }else{
+            return null;
+        }
     }
 
     /**
@@ -26,16 +33,20 @@ class VisitorsController extends Controller
     {
         // Return only approved visitors to security else return all
         if(Auth::user() != null){
-            $role = $this->checkUserRole();   
-            if($role != 'SECURITY'){
-                $visitors = Visitor::All();
-                return view('list.visitorlist')->with('visitors', $visitors);
+            $role = $this->checkUserRole(); 
+            if($role != null){  
+                if($role != 'SECURITY'){
+                    $visitors = Visitor::All();
+                    return view('list.visitorlist')->with('visitors', $visitors);
+                }else{
+                    $visitors = DB::table('visitors')
+                                ->select('*')
+                                ->where('approved', '=', '1')
+                                ->get();
+                    return view('list.visitorlist')->with('visitors', $visitors);
+                }
             }else{
-                $visitors = DB::table('visitors')
-                            ->select('*')
-                            ->where('approved', '=', '1')
-                            ->get();
-                return view('list.visitorlist')->with('visitors', $visitors);
+                return view('auth.welcom');
             }
         }else{
             return view('auth.login');
@@ -52,11 +63,15 @@ class VisitorsController extends Controller
     {
         //Validation to not allow entry by security users
         if(Auth::user() != null){
-            $role = $this->checkUserRole();   
-            if($role != 'SECURITY'){        
-                return view('list.addVisitor');
+            $role = $this->checkUserRole(); 
+            if($role != null){  
+                if($role != 'SECURITY'){        
+                    return view('list.addVisitor');
+                }else{
+                    return redirect('/')->with('error', 'Does not have permission to add visitors');
+                }
             }else{
-                return redirect('/')->with('error', 'Does not have permission to add visitors');
+                return view('auth.welcom');
             }
         }else{
             return view('auth.login');

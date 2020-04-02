@@ -26,8 +26,14 @@ class UserController extends Controller
         $role = DB::table('user_infos')
                 ->select('userrole')
                 ->where('email', '=', Auth::user()->email)
+                ->where('approved', '=', '1')
                 ->get();
-        return $role[0]->userrole;
+
+        if(count($role)> 0){
+            return $role[0]->userrole;
+        }else{
+            return null;
+        }
     }
 
     public function index(){
@@ -35,12 +41,16 @@ class UserController extends Controller
         if(Auth::user() != null){
             $role = $this->checkUserRole();
 
-            if($role != 'SECURITY'){
-                $users = DB::table('users')
-                                ->join('user_infos', 'users.email', '=', 'user_infos.email')
-                                ->select('users.name', 'users.email', 'user_infos.userrole', 'user_infos.approved')
-                                ->get();
-                return view('user.userlist')->with('users', $users);
+            if($role != null){
+                if($role != 'SECURITY'){
+                    $users = DB::table('users')
+                                    ->join('user_infos', 'users.email', '=', 'user_infos.email')
+                                    ->select('users.name', 'users.email', 'user_infos.userrole', 'user_infos.approved')
+                                    ->get();
+                    return view('user.userlist')->with('users', $users);
+                }else{
+                    return view('auth.welcom');
+                }
             }else{
                 return view('auth.welcom');
             }
