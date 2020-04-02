@@ -44,7 +44,12 @@
                     {{Form::label('visitorArrived', 'Arrived')}}<br> 
                     {{Form::Hidden('_method', 'PUT')}}              
                     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}                                   
-                {!! Form::close() !!}   
+                {!! Form::close() !!} 
+                {!! Form::Open(['action' => 'VisitorsController@removeVisitor', 'method' => 'POST', 'class' => 'pull-right'])!!}
+                    {{Form::label('visitorIdDel', 'Id')}}<br>
+                    {{Form::text('visitorIdDel', '',['id=visitorIdDel'])}}<br>                     {!! Form::hidden('_method', 'DELETE') !!}
+                    {!! Form::submit('Remove', ['class' => 'btn btn-danger']) !!}
+                {!! Form::Close() !!}                  
             </div>                    
             <!-- SidePanel User-->
             <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='userSidePan'>

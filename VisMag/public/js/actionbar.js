@@ -36,6 +36,7 @@ function sidePanOpenVisitor(innerHtml){
     var param = innerHtml.split('<td>');
 
     document.getElementById('visitorId').value = ((param[0].split('</td>'))[0]).split('<td hidden="hidden">')[1];
+    document.getElementById('visitorIdDel').value = document.getElementById('visitorId').value;
     document.getElementById('visitorName').value = (param[1].split('</td>'))[0];    
     document.getElementById('visitorNic').value = (param[2].split('</td>'))[0];
     document.getElementById('visitorVehicle').value = (param[3].split('</td>'))[0];  

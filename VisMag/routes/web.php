@@ -30,3 +30,4 @@ Route::get('/Users', 'User\UserController@index');
 Route::resource('UserInfo', 'UserInfoController');
 Route::match(['PATCH', 'PUT'], 'Users/UpdateRole', 'UserInfoController@updateRole');
 Route::match(['PATCH', 'PUT'], 'Visitors/UpdateVisitor', 'VisitorsController@updateVisitor');
+Route::delete('Visitors/RemoveVisitor', 'VisitorsController@removeVisitor');

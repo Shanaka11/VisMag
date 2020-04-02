@@ -228,7 +228,8 @@ class VisitorsController extends Controller
     public function destroy($id)
     {
         //Validation to not allow security to entry by security users
-        $visitor = Visitor::find($id);
+        $role = $this->checkUserRole(); 
+        $visitor = Visitor::find($id);      
         if($visitor->approved == '1'){
             if($role == 'ADMIN'){
                 $visitor->delete();
@@ -244,5 +245,9 @@ class VisitorsController extends Controller
                 return redirect('/')->with('error', 'Only ADMIN users can remove approved visitors');                
             }
         }
+    }
+
+    public function removeVisitor(Request $request){        
+        return $this->destroy($request->input('visitorIdDel'));
     }
 }
