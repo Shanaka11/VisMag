@@ -59,4 +59,12 @@ class UserController extends Controller
         }
     }
 
+    function approvedList($value){
+        $users = DB::table('users')
+            ->join('user_infos', 'users.email', '=', 'user_infos.email')
+            ->select('users.name', 'users.email', 'user_infos.userrole', 'user_infos.approved')
+            ->where('user_infos.approved', '=', $value)
+            ->get();
+        return view('user.userlist')->with('users', $users);       
+    }    
 }

@@ -60,7 +60,18 @@ Taken from https://www.w3schools.com/w3css/4/w3.css
 .w3-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
 
 
-.user{
-    text-align: left;
-    font-size: 25.5vw;
+.PageContainer{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 1em;
+}
+
+.card-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.link{
+  text-decoration : none; 
+  color :#000000;
 }

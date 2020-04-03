@@ -1,11 +1,3 @@
-function setCreateBtnShow(){
-    document.getElementById("creatVisitor").disabled = false;
-}
-
-function setCreateBtnHide(){
-    document.getElementById("creatVisitor").disabled = true;
-}
-
 function checkActBarButtons(){
     userRole = document.getElementById('currUserRole').innerText;
     if(userRole == 'ADMIN'){

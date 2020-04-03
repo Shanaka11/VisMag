@@ -247,6 +247,24 @@ class VisitorsController extends Controller
         }
     }
 
+    function arrivedList($value){
+
+        $visitors = DB::table('visitors')
+            ->select('*')
+            ->where('arrived', '=', $value)
+            ->get();
+        return view('list.visitorlist')->with('visitors', $visitors);
+
+    }
+
+    function approvedList($value){
+        $visitors = DB::table('visitors')
+            ->select('*')
+            ->where('approved', '=', $value)
+            ->get();
+        return view('list.visitorlist')->with('visitors', $visitors);        
+    }
+
     public function removeVisitor(Request $request){        
         return $this->destroy($request->input('visitorIdDel'));
     }

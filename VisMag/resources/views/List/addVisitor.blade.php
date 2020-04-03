@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script>
-    setCreateBtnHide();
-</script>
         <H1>Add Visitor</H1>
         @include('inc.messages')
         {!! Form::open(['action' => 'VisitorsController@store', 'method', 'POST']) !!}

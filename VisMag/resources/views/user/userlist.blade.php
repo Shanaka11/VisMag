@@ -2,7 +2,6 @@
 
 @section('script')
 <script>
-    setCreateBtnShow();
     document.addEventListener("DOMContentLoaded", () => {
             const rows = document.querySelectorAll("tr[data-name]");
 
