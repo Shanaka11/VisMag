@@ -85,7 +85,8 @@
                                     </a>
                                 @endif
                             @else
-                                <H1>{{ Auth::user()->name }}</H1>
+                                <p class="user">{{ Auth::user()->name }}<p>
+                                <p id="currUserRole" class="user">{{ Auth::user()->getInfo(Auth::user()->email)}}</p>
                                 <a href= "{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -98,24 +99,12 @@
                             @endguest                            
                         </div>
                         <hr>
-                        <h3>Actions</h3>
-                        <p>All the actions that a user can take, Actions change depending on the type of user</p>
                         <div class= "container">
-                        <!--<div class="row jumbotron">-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-12 col-lg-12 col-xl-12">-->
-                                <a href="/Visitor"><button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">View Visitors</button></a>
-                            <!--</div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-12 col-lg-12 col-xl-12">-->
-                                <a href="/Visitor/create"><button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width" id='creatVisitor' >New Visitor</button></a>
-                            <!--</div>-->
-                            <!--<div class="col-xs-3 col-sm-3 col-md-12 col-lg-12 col-xl-12">-->
-                                <a href="/Users"><button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Show Users</button></a>
-                            <!--</div>-->                        
-                            <!--<div class="col-xs-3 col-sm-3 col-md-12 col-lg-12 col-xl-12">-->
-                                <a href="/#"><button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Approve</button></a>
-                            <!--</div>-->                 
-                        <!--</div>-->
-                            </div>
+                            <a href="/Visitor"><button id="Visitor" type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">View Visitors</button></a>
+                            <a href="/Visitor/create"><button id="CreateVisitor"type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width" id='creatVisitor' >New Visitor</button></a>
+                            <a href="/Users"><button id="Users" type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Show Users</button></a>
+                            <a href="/"><button id="Home" type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Home</button></a>
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
                         <i class="fas fa-bold"></i>
@@ -131,6 +120,11 @@
             </div>            
         </main>
     </div>
+    @auth
+        <script>
+            checkActBarButtons();
+        </script>
+    @endauth
     @yield('script')
 </body>
 </html>

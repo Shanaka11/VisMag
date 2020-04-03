@@ -6,6 +6,31 @@ function setCreateBtnHide(){
     document.getElementById("creatVisitor").disabled = true;
 }
 
+function checkActBarButtons(){
+    userRole = document.getElementById('currUserRole').innerText;
+    if(userRole == 'ADMIN'){
+        document.getElementById('Visitor').style.display = '';
+        document.getElementById('CreateVisitor').style.display = '';
+        document.getElementById('Users').style.display = '';
+        document.getElementById('Home').style.display = '';
+    }else if(userRole == 'RECEPTION'){
+        document.getElementById('Visitor').style.display = '';
+        document.getElementById('CreateVisitor').style.display = '';
+        document.getElementById('Users').style.display = 'none';
+        document.getElementById('Home').style.display = '';        
+    }else if(userRole == 'SECURITY'){
+        document.getElementById('Visitor').style.display = '';
+        document.getElementById('CreateVisitor').style.display = 'none';
+        document.getElementById('Users').style.display = 'none';
+        document.getElementById('Home').style.display = '';
+    }else{
+        document.getElementById('Visitor').style.display = 'none';
+        document.getElementById('CreateVisitor').style.display = 'none';
+        document.getElementById('Users').style.display = 'none';
+        document.getElementById('Home').style.display = 'none';
+    }
+}
+
 function sidePanOpen(innerHtml){
     var param = innerHtml.split('<td>');    
     document.getElementById('userName').value = (param[1].split('</td>'))[0];    

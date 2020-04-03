@@ -5,11 +5,27 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use app\UserInfo;
+use DB;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
+    public function getInfo($email){
+        $role = DB::table('user_infos')
+                ->select('userrole')
+                ->where('email', '=', $email)
+                ->where('approved', '=', '1')                
+                ->get();    
+
+        if(count($role)> 0){
+            return $role[0]->userrole;
+        }else{
+            return null;
+        }                 
+        //return $this->hasOne(UserInfo::class, $email);
+    }
     /**
      * The attributes that are mass assignable.
      *

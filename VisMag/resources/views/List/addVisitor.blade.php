@@ -21,7 +21,7 @@
             </div>
             <div class = "form-group">
                 {{Form::label('date_of_arrival', 'Date of Arrival')}}
-                {{Form::text('date_of_arrival', '', ['class' => 'form-control', 'placeholder' => 'Date of Arrival'])}}
+                {{Form::Date('date_of_arrival', '', ['class' => 'form-control'])}}
             </div> 
             {{ Form::submit('Submit', ['class' => 'btn btn-primary'])}}                            
         {!! Form::close() !!}
