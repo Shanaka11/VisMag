@@ -3,7 +3,7 @@
 @section('content')
 <h1>Hi {{ Auth::user()->name }}</h1>
 <div class="PageContainer">
-    <div class="card">
+    <div class="card" id='approval'>
         Unapproved Users/Visitors
         <div class="card-container">
             <a href="/Visitor/Approved/0">

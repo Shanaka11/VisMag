@@ -71,26 +71,26 @@
             <div class="w3-overlay w3-animate-opacity" onclick="sidePanClose()" style="cursor:pointer" id="myOverlay"></div>                       
             <div class="container-fluid padding">
                 <div class="row text-center padding">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 c-action-bar">
                         <i class="fas fa-code"></i>
                         <div class="container">
 
                             @guest
                                 <a href="{{ route('login') }}">
-                                    <button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">{{ __('Login') }}</button>
+                                    <button type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">{{ __('Login') }}</button>
                                 </a>                                        
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}">
-                                        <button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">{{ __('Register') }}</button>                                        
+                                        <button type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">{{ __('Register') }}</button>                                        
                                     </a>
                                 @endif
                             @else
-                                <p class="user">{{ Auth::user()->name }}<p>
-                                <p id="currUserRole" class="user">{{ Auth::user()->getInfo(Auth::user()->email)}}</p>
+                                <p class="user c-action-header">{{ Auth::user()->name }}<p>
+                                <p id="currUserRole" class="user c-action-subheader">{{ Auth::user()->getInfo(Auth::user()->email)}}</p>
                                 <a href= "{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    <button type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">{{ __('Logout') }}</button>
+                                    <button type="button" class="btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width c-action-btn">{{ __('Logout') }}</button>
                                 </a>                                                                                                                                          
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -100,10 +100,10 @@
                         </div>
                         <hr>
                         <div class= "container">
-                            <a href="/Visitor"><button id="Visitor" type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">View Visitors</button></a>
-                            <a href="/Visitor/create"><button id="CreateVisitor"type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width" id='creatVisitor' >New Visitor</button></a>
-                            <a href="/Users"><button id="Users" type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Show Users</button></a>
-                            <a href="/"><button id="Home" type="button" class="btn btn-outline-secondary btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Home</button></a>
+                            <a href="/Visitor"><button id="Visitor" type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">View Visitors</button></a>
+                            <a href="/Visitor/create"><button id="CreateVisitor"type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width" id='creatVisitor' >New Visitor</button></a>
+                            <a href="/Users"><button id="Users" type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Show Users</button></a>
+                            <a href="/"><button id="Home" type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Home</button></a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">

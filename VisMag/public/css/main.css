@@ -75,3 +75,65 @@ Taken from https://www.w3schools.com/w3css/4/w3.css
   text-decoration : none; 
   color :#000000;
 }
+
+
+/* Main Layout Design */
+
+.c-action-bar{
+  background: #2F4858;
+}
+
+.c-action-btn{
+  color:#BEFF4B;
+  background-color: rgba(0, 0, 0, 0);
+  border-color:#BEFF4B  
+}
+
+.c-action-btn:hover{
+  color:rgb(0, 0, 0);
+  background-color:#BEFF4B;
+  border-color:#BEFF4B  
+}
+
+.c-action-header{
+  text-align: center;
+  font-size: 2rem;
+  color: #BEFF4B;
+}
+
+.c-action-subheader{
+  text-align: center;
+  font-size: 1rem;
+  color: #BEFF4B;
+}
+/*
+.btn-outline-secondary{
+  color:#6c757d;
+  border-color:#6c757d
+}
+
+.btn-outline-secondary:hover{
+  color:#fff;
+  background-color:#6c757d;
+  border-color:#6c757d
+}
+
+.btn-outline-secondary.focus,.btn-outline-secondary:focus{
+  box-shadow:0 0 0 .2rem rgba(108,117,125,.5)
+}
+
+.btn-outline-secondary.disabled,.btn-outline-secondary:disabled{
+  color:#6c757d;
+  background-color:transparent
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled).active,.btn-outline-secondary:not(:disabled):not(.disabled):active,.show>.btn-outline-secondary.dropdown-toggle{
+  color:#fff;
+  background-color:#6c757d;
+  border-color:#6c757d
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled).active:focus,.btn-outline-secondary:not(:disabled):not(.disabled):active:focus,.show>.btn-outline-secondary.dropdown-toggle:focus{
+  box-shadow:0 0 0 .2rem rgba(108,117,125,.5)
+}
+*/
