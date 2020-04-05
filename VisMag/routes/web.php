@@ -33,4 +33,4 @@ Route::match(['PATCH', 'PUT'], 'Visitors/UpdateVisitor', 'VisitorsController@upd
 Route::delete('Visitors/RemoveVisitor', 'VisitorsController@removeVisitor');
 Route::get('Visitor/Arrived/{state}','VisitorsController@arrivedList');
 Route::get('Visitor/Approved/{state}','VisitorsController@approvedList');
-Route::get('User/Approved/{state}','UserController@approvedList');
+Route::get('User/Approved/{state}','User\UserController@approvedList');

@@ -12,6 +12,33 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function getUsersApproved($approved){
+        $count = DB::table('user_infos')
+                    ->select('userrole')
+                    ->where('approved', '=', $approved)                
+                    ->get();
+        
+        return count($count);
+    }
+
+    public function getVisitorsApproved($approved){
+        $count = DB::table('visitors')
+                    ->select('name')
+                    ->where('approved', '=', $approved)                
+                    ->get();
+        
+        return count($count);
+    }
+
+    public function getVisitorsArrived($arrived){
+        $count = DB::table('visitors')
+                    ->select('name')
+                    ->where('arrived', '=', $arrived)                
+                    ->get();
+        
+        return count($count);
+    }
+
     public function getInfo($email){
         $role = DB::table('user_infos')
                 ->select('userrole')
