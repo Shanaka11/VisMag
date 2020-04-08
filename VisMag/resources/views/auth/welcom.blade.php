@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Hi {{ Auth::user()->name }}</h1>
+<h1 class="c-action-header">Hi {{ Auth::user()->name }}</h1>
 <div class="PageContainer">
     <div class="card" id='approval'>
         Unapproved Users/Visitors

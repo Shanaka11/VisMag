@@ -78,33 +78,35 @@ Taken from https://www.w3schools.com/w3css/4/w3.css
 
 
 /* Main Layout Design */
-
+.c-action_back{
+  background: rgb(24, 87, 126);
+}
 .c-action-bar{
   background: #2F4858;
 }
 
 .c-action-btn{
-  color:#BEFF4B;
+  color:rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0);
-  border-color:#BEFF4B  
+  border-color:rgb(255, 255, 255)  
 }
 
 .c-action-btn:hover{
   color:rgb(0, 0, 0);
-  background-color:#BEFF4B;
-  border-color:#BEFF4B  
+  background-color:rgb(255, 255, 255);
+  border-color:rgb(255, 255, 255)  
 }
 
 .c-action-header{
   text-align: center;
   font-size: 2rem;
-  color: #BEFF4B;
+  color: rgb(255, 255, 255);
 }
 
 .c-action-subheader{
   text-align: center;
   font-size: 1rem;
-  color: #BEFF4B;
+  color: rgb(255, 255, 255);
 }
 /*
 .btn-outline-secondary{

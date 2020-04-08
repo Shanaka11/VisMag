@@ -24,9 +24,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <script type="text/javascript" src="{{asset('js/actionbar.js')}}"></script>    
 </head>
-<body>
+<body class="c-action_back">
     <div id="app">
-        <main class="py-4">
+        <main class="padding-top">
             <!-- SidePanel Visitor-->
             <div class="sidebar w3-bar-block w3-animate-left" style="display:none;z-index:3" id='visitorSidePan'>
                 {!! Form::open(['action' => 'VisitorsController@updateVisitor', 'method' => 'POST']) !!}
@@ -71,7 +71,7 @@
             <div class="w3-overlay w3-animate-opacity" onclick="sidePanClose()" style="cursor:pointer" id="myOverlay"></div>                       
             <div class="container-fluid padding">
                 <div class="row text-center padding">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 c-action-bar">
+                    <div class="col-lg-2 c-action-bar">
                         <i class="fas fa-code"></i>
                         <div class="container">
 
@@ -106,14 +106,14 @@
                             <a href="/"><button id="Home" type="button" class="btn c-action-btn btn-lg btn-act col-xs-3 col-sm-3 col-md-3 col-lg-12 responsive-width">Home</button></a>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <div class="col-lg-8">
                         <i class="fas fa-bold"></i>
                         @yield('content')
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-2">
+                    <div class="col-lg-2 c-action-bar">
                         <i class="fab fa-css3"></i>
-                        <h3>Notifications</h3>
-                        <p>Sends notifications to the relevent users depending on other users activities</p>
+                        <h3 class="c-action-header">Notifications</h3>
+                        <p class="c-action-subheader">Sends notifications to the relevent users depending on other users activities</p>
                         @include('inc.messages')
                     </div>				
                 </div>
